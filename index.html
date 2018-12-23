@@ -14,9 +14,12 @@
 	</div>
   <script>
 
-  	var ourGame = new ToepenGame(15, [{name:"Axel"}, {name:"Max"}, cards]);
-  	ourGame.startGame();
+  	var ourGame = new ToepenGame();
 
+  	ourGame.startGame(15, [{name:"Axel"}, {name:"Max"}, cards]);
+  	//call the game with all the players. these should be instances of the AI's/human players that are playing the game.
+
+  	
   </script>
 </body>
 </html>
