@@ -27,7 +27,20 @@ function ToepenGame(){
 
 	this.startRound = function(turnPlayer){
 		//starts a round with 4/8 cards for all players
-		this.cards.shuffle();
+
+		// geef iedereen 4 of 8 kaarten
+		this.deck = new cards.Deck(); 
+		this.deck.addCards(this.cards.all);
+		
+
+		this.deck = shuffle1(this.deck);
+
+
+
+
+
+
+
 		
 		this.lastToep = -1; //at the start of the game, no one has toeped yet.
 		this.turnPlayer = turnPlayer;
@@ -58,6 +71,7 @@ function ToepenGame(){
 	}
 
 
+
 	this.whatsnext = function(){
 		//this function can handle what is the next this that needs to happen. updates the orderofthings and turnPlayer accordingly.
 		if(this.turnPlayer == this.trickStarter && this.trickStarterWent){
@@ -86,7 +100,7 @@ function ToepenGame(){
 		} else{
 			if (this.orderofthings[0] == "ask4images"){
 				this.ask4imageslist[this.turnPlayer] = this.players[this.turnPlayer].ask4images();
-				if(this.playes[this.turnPlayer] == "ai"){
+				if(this.players[this.turnPlayer] == "ai"){
 					this.whatsnext();
 				}
 			}
@@ -94,3 +108,20 @@ function ToepenGame(){
 		}
 	}
 }
+
+	function shuffle1(deck) {
+        //Fisher yates shuffle
+        //console.log(deck[0], deck[1],deck[2], deck[3],deck[4], deck[5]);
+		var deck2 = new cards.Deck();
+
+        var i = deck.length;
+        if (i == 0) return;
+        while (--i) {
+            var j = Math.floor(Math.random() * (i + 1));
+            deck2.addCards([deck[j]]);
+        }
+        //console.log(deck[0]);
+        deck2.addCards([deck[0]]);
+        //console.log(deck2[0], deck2[1],deck2[2], deck2[3],deck2[4], deck2[5]);
+        return deck2;
+    }

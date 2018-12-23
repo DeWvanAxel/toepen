@@ -13,13 +13,55 @@
 		<!-- This is where we place everything! -->
 	</div>
   <script>
-  	var player =function(){
-  		this.getHand(){
+    // get card options
+    var opt = {
+      cardSize : {width:69,height:94, padding:18},
+      animationSpeed : 500,
+      table : 'body',
+      cardback : 'red',
+      acesHigh : true,
+      cardsUrl : 'img/cards.png',
+      blackJoker : false,
+      redJoker : false
+    };
+
+    // get cards
+    cards.init({table:'#card-table'});
+
+    // Change to get only toep-cards
+    toepCards = Array()
+
+    for (var i = 0; i < cards.all.length; i++) {
+      if (cards.all[i].rank >  6 || cards.all[i].rank == 1){
+        if (cards.all[i].rank > 10){
+          cards.all[i].toeprank = cards.all[i].rank - 4
+        } else if (10 >= cards.all[i].rank && cards.all[i].rank > 1){
+          cards.all[i].toeprank = cards.all[i].rank + 4
+        } else {
+          cards.all[i].toeprank = 10
+        }
+        
+        toepCards.push(cards.all[i])
+      }
+    }  
+    cards.all = toepCards
+
+
+  	var Player = function() {
+      this.isAI = function() {
+        return true;
+      }
+  		this.getHand = function() {
 
   		}
-  		this.turn(){
+  		this.turn = function() {
 
   		}
+      this.ask4images = function() {
+
+        // should return true or false
+        return
+      }
   	}
   	var ourGame = new ToepenGame();
 
