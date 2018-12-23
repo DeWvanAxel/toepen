@@ -13,13 +13,24 @@
 		<!-- This is where we place everything! -->
 	</div>
   <script>
+  	var player =function(){
+  		this.getHand(){
 
+  		}
+  		this.turn(){
+
+  		}
+  	}
   	var ourGame = new ToepenGame();
 
-  	ourGame.startGame(15, [{name:"Axel"}, {name:"Max"}, cards]);
+  	axel = new Player();
+  	max = new Player();
+
+  	ourGame.startGame(15, [axel, max], cards);
   	//call the game with all the players. these should be instances of the AI's/human players that are playing the game.
 
-  	
+
+
   </script>
 </body>
 </html>
